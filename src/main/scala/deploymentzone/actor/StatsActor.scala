@@ -148,7 +148,7 @@ object Stats {
     val start = System.nanoTime()
     val result = timed
     val end = System.nanoTime()
-    println(s"timing.... ${(end-start).nanoseconds}")
+    println(s"timing $bucket .... ${(end-start).nanoseconds}")
     statsActor ! Timing(bucket, sampleRate)((end-start).nanoseconds)
     result
   }
