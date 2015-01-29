@@ -25,13 +25,11 @@ private[actor] trait StatsProtocolImplementation
       unstashAll()
       context.become(connected)
     case _ =>
-      println("not connected yet, stashing messages")
       stash()
   }
   
   protected def connected: Actor.Receive = {
     case msg: Metric[_] =>
-      println(s"received $msg")
       scheduledDispatcher ! process(msg)
   }
 }

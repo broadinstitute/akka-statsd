@@ -145,11 +145,10 @@ object Stats {
   def withTimer[T](bucket:String, sampleRate:Double = 1.0)(timed : => T)(implicit statsActor: ActorRef): T = {
     import scala.concurrent.duration._
 
-    val start = System.nanoTime()
+    val start = System.currentTimeMillis()
     val result = timed
-    val end = System.nanoTime()
-    println(s"timing $bucket .... ${(end-start).nanoseconds}")
-    statsActor ! Timing(bucket, sampleRate)((end-start).nanoseconds)
+    val time = System.currentTimeMillis()-start
+    statsActor ! Timing(bucket, sampleRate)(time.milliseconds)
     result
   }
 
