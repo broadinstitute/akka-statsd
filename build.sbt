@@ -1,9 +1,9 @@
 import com.typesafe.sbt.pgp.PgpKeys
 
 val commonSettings = Seq(
-  organization := "com.newmotion",
+  organization := "org.broadinstitute",
   licenses := Seq("MIT" -> url("http://opensource.org/licenses/MIT")),
-  homepage := Some(url("https://github.com/NewMotion/akka-statsd")),
+  homepage := Some(url("https://github.com/broadinstitute/akka-statsd")),
   libraryDependencies ++= Seq(
     akka("testkit"),
     "org.scalatest" %% "scalatest" % "3.0.3"
